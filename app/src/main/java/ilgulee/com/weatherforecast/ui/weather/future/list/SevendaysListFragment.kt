@@ -1,4 +1,4 @@
-package ilgulee.com.weatherforecast.ui.dashboard
+package ilgulee.com.weatherforecast.ui.weather.future.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import ilgulee.com.weatherforecast.R
 
-class DashboardFragment : Fragment() {
+class SevendaysListFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var sevendaysListViewModel: SevendaysListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(this, Observer {
+        sevendaysListViewModel =
+            ViewModelProviders.of(this).get(SevendaysListViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_sevendays, container, false)
+        val textView: TextView = root.findViewById(R.id.text_7days)
+        sevendaysListViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root
