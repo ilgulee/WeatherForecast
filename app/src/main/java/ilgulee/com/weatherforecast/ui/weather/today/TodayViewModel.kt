@@ -14,6 +14,9 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
     private val currentWeatherRepository = CurrentWeatherRepository()
     val currentWeather = currentWeatherRepository.currentWeather
 
+    private val unitSystem = currentWeatherRepository.unitSystem
+    private val location = "London"
+
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
@@ -28,13 +31,13 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
     )
 
     init {
-        refreshCurrentWeatherProperty("New York")
+        refreshCurrentWeatherProperty(location, unitSystem.unit)
     }
 
-    private fun refreshCurrentWeatherProperty(location: String) {
+    private fun refreshCurrentWeatherProperty(location: String, unit: String) {
         coroutineScope.launch {
             try {
-                currentWeatherRepository.refreshCurrentWeather(location)
+                currentWeatherRepository.refreshCurrentWeather(location, unit)
                 _eventNetworkError.value = false
                 _isNetworkErrorShown.value = false
             } catch (e: Exception) {

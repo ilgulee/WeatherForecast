@@ -8,7 +8,7 @@ object NetworkRemoteDataSource : RemoteDataSource {
     private const val KEY = "0d165139f14c8c8e5502ec3e1f38f4b9"
     private val api = Injection.provideWeatherServiceApi()
 
-    override suspend fun getCurrentWeather(location: String): CurrentWeatherProperty {
-        return api.getCurrentWeatherAsync(KEY, location).await()
+    override suspend fun getCurrentWeather(location: String, unit: String): CurrentWeatherProperty {
+        return api.getCurrentWeatherAsync(KEY, location, unit).await()
     }
 }

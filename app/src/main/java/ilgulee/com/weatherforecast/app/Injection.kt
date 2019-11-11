@@ -1,16 +1,20 @@
 package ilgulee.com.weatherforecast.app
 
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import ilgulee.com.weatherforecast.BuildConfig
 import ilgulee.com.weatherforecast.data.LocalDataSource
 import ilgulee.com.weatherforecast.data.RemoteDataSource
+import ilgulee.com.weatherforecast.data.UnitDataSource
 import ilgulee.com.weatherforecast.database.RoomLocalDataSource
 import ilgulee.com.weatherforecast.database.WeatherDatabase
 import ilgulee.com.weatherforecast.database.getDatabase
 import ilgulee.com.weatherforecast.network.NetworkRemoteDataSource
 import ilgulee.com.weatherforecast.network.WeatherServiceApi
+import ilgulee.com.weatherforecast.provider.PreferenceUnitDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,6 +24,7 @@ object Injection {
 
     fun provideNetworkRemoteDataSource(): RemoteDataSource = NetworkRemoteDataSource
     fun provideRoomLocalDataSource(): LocalDataSource = RoomLocalDataSource
+    fun providePreferenceUnitDataSource(): UnitDataSource = PreferenceUnitDataSource
 
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
@@ -60,5 +65,9 @@ object Injection {
 
     fun provideDatabase(): WeatherDatabase {
         return getDatabase(context)
+    }
+
+    fun provideSharedPreference(): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(context.applicationContext)
     }
 }
