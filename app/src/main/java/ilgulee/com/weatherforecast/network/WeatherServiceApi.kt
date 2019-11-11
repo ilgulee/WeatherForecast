@@ -1,14 +1,15 @@
 package ilgulee.com.weatherforecast.network
 
 import ilgulee.com.weatherforecast.network.model.CurrentWeatherProperty
-import retrofit2.Call
+import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface WeatherServiceApi {
     @GET("current")
-    fun getCurrentWeather(
+    fun getCurrentWeatherAsync(
         @Query("access_key") key: String,
-        @Query("query") location: String
-    ): Call<CurrentWeatherProperty>
+        @Query("query") location: String,
+        @Query("units") unit: String = "m"
+    ): Deferred<CurrentWeatherProperty>
 }

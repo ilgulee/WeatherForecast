@@ -1,8 +1,7 @@
 package ilgulee.com.weatherforecast.data
 
-import androidx.lifecycle.LiveData
 import ilgulee.com.weatherforecast.network.model.CurrentWeatherProperty
 
 interface RemoteDataSource {
-    fun getCurrentWeather(location: String): LiveData<CurrentWeatherProperty>
+    suspend fun getCurrentWeather(location: String): CurrentWeatherProperty
 }
