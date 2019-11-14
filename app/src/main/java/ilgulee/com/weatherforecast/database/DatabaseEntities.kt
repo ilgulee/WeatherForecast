@@ -38,7 +38,7 @@ fun DatabaseCurrentWeather.asCurrentWeatherDomainModel(): CurrentWeather {
         uvIndex = this.uvIndex,
         visibility = this.visibility,
         precipitation = this.precip,
-        feelslike = this.feelslike,
+        feelsLike = this.feelslike,
         windDirection = this.windDir,
         windSpeed = this.windSpeed,
         weatherDescription = this.weatherDescription,

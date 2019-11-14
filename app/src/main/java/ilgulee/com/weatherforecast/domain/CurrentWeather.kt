@@ -10,7 +10,7 @@ data class CurrentWeather(
     val uvIndex: Int,
     val visibility: Int,
     val precipitation: Double,
-    val feelslike: Int,
+    val feelsLike: Int,
     val windDirection: String,
     val windSpeed: Int,
     val weatherDescription: String,

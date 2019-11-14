@@ -50,20 +50,20 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <ImageView
-            android:contentDescription="@string/icon"
             android:id="@+id/imageView_icon"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:contentDescription="@string/icon"
             app:imageUrl="@{viewModel.currentWeather.weatherIconUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.523"
+            app:layout_constraintHorizontal_bias="0.566"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.242"
+            app:layout_constraintVertical_bias="0.289"
             app:layout_constraintWidth_percent="0.25"
             tools:src="@mipmap/ic_weather_sun" />
 
@@ -78,10 +78,10 @@
             app:isMetric="@{viewModel.isMetric}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_icon"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintHorizontal_bias="0.434"
+            app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView_icon"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.074"
             app:temperature="@{viewModel.currentWeather.temperature}"
             tools:text="29 °C" />
 
@@ -95,10 +95,10 @@
             app:isMetric="@{viewModel.isMetric}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView_temperature"
-            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintHorizontal_bias="0.555"
             app:layout_constraintStart_toStartOf="@+id/textView_temperature"
             app:layout_constraintTop_toBottomOf="@+id/textView_temperature"
-            app:layout_constraintVertical_bias="0.035"
+            app:layout_constraintVertical_bias="0.083"
             tools:text="Feels like 20 °C" />
 
         <TextView
@@ -113,10 +113,10 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintHorizontal_bias="0.134"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.112"
+            app:layout_constraintVertical_bias="0.022"
             tools:text="Mostly Sunny" />
 
         <TextView
@@ -128,14 +128,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            app:wind="@{viewModel.currentWeather}"
             app:isMetric="@{viewModel.isMetric}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintHorizontal_bias="0.154"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.485"
+            app:layout_constraintVertical_bias="0.578"
+            app:wind="@{viewModel.currentWeather}"
             tools:text="Wind: SE, 5.3 m/s" />
 
         <TextView
@@ -145,15 +145,15 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            app:precipitation="@{viewModel.currentWeather}"
-            app:isMetric="@{viewModel.isMetric}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:isMetric="@{viewModel.isMetric}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView_wind"
             app:layout_constraintTop_toBottomOf="@+id/textView_wind"
-            app:layout_constraintVertical_bias="0.072"
+            app:layout_constraintVertical_bias="0.073"
+            app:precipitation="@{viewModel.currentWeather}"
             tools:text="Precipitation: 5 mm" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

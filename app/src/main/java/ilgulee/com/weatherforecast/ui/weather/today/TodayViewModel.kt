@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import ilgulee.com.weatherforecast.provider.UnitSystem
 import ilgulee.com.weatherforecast.repository.CurrentWeatherRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +16,10 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
     private val currentWeatherRepository = CurrentWeatherRepository()
     val currentWeather = currentWeatherRepository.currentWeather
 
-    private val unitSystem = currentWeatherRepository.unitSystem
+    private val _unitSystem = MutableLiveData(currentWeatherRepository.unitSystem)
+    val isMetric = Transformations.map(_unitSystem) {
+        it.unit == UnitSystem.METRIC.unit
+    }
     private val location = "London"
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
@@ -31,7 +36,7 @@ class TodayViewModel(application: Application) : AndroidViewModel(application) {
     )
 
     init {
-        refreshCurrentWeatherProperty(location, unitSystem.unit)
+        refreshCurrentWeatherProperty(location, _unitSystem.value!!.unit)
     }
 
     private fun refreshCurrentWeatherProperty(location: String, unit: String) {
